@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useReducer, useState } from 'react'
+import Routes from './routes';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Nav from './components/Nav';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Footer from './components/Footer/Footer';
+import data from './Pages/Data';
+import Items from './portfolio_gallery/Items';
+
+
+
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
+  const { productItems } = data;
+  const { cartItems, setCartItems } = useState([]);
+
+  function getfeedbackalert() {
+    alert("Submit your feedback successfully, Thank You")
+  }
+  return (
+
+    <>
+
+      <Router>
+
+        <Nav />
+        <Routes productItems={productItems} cartItems={cartItems} />
+
+      </Router>
+
+      <Footer data={getfeedbackalert} />
+    </>
+  )
+}
 export default App;
